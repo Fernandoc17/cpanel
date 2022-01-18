@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <title>Form Evento</title>
+    <!--Vue & Axios-->
+    <link rel="stylesheet" href="node_modules/primevue/resources/primevue.css">
+    <link rel="stylesheet" href="node_modules/primevue/resources/themes/saga-blue/theme.css">
+    <link rel="stylesheet" href="node_modules/primeicons/primeicons.css">
+    <link rel="stylesheet" href="node_modules/primeflex/primeflex.css">
+    
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+
+    <!--Components-->
+    <script src="node_modules/primevue/inputtext/inputtext.umd.js"></script>
+    <script src="node_modules/primevue/button/button.umd.js"></script>
+    <script src="node_modules/primevue/datatable/datatable.umd.js"></script>
+    <script src="node_modules/primevue/column/column.umd.js"></script>
+    <script src="node_modules/primevue/dialog/dialog.umd.js"></script>
+    <script src="node_modules/primevue/calendar/calendar.umd.min.js"></script>
+    <script src="node_modules/primevue/dropdown/dropdown.umd.js"></script>
+    <script src="node_modules/primevue/fileupload/fileupload.umd.js"></script>
+    <script src="node_modules/primevue/inputmask/inputmask.umd.js"></script>
+    <script src="node_modules/primevue/inputnumber/inputnumber.umd.js"></script>
+    <script src="node_modules/primevue/fileupload/fileupload.umd.min.js"></script>
+
+
+
+    
+</head>
+<body>
+    <input type="checkbox" id="nav-toggle">
+    <aside class="sidebar">
+        <div class="siderbar__brand">
+            <span class="sidebar__logo las la-cube"></span>
+            <h2 class="sidebar__brand__title">Evento Dashboard</h2>
+        </div>
+        <div class="sidebar__menu">
+            <ul>
+                <li>
+                    <a href="#" class="sidebar__menu__link link--active" title="">
+                        <i class="far fa-calendar-alt"></i>
+                        <span class="">Eventos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar__menu__link" title="">
+                        <i class="fas fa-pen"></i>
+                        <span class="">Example</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar__menu__link" title="">
+                        <i class="fas fa-user-edit"></i>
+                        <span class="">Example</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar__menu__link" title="">
+                        <i class="far fa-clipboard"></i>
+                        <span class="">Example</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <main class="main" id="app">
+        <header class="header" id="header">
+            <h3 class="header__buttonToggle">
+                <label for="nav-toggle">
+                    <span class="fas fa-bars"></span>
+                </label>
+            </h3>
+            <!-- <div class="search-wrapper">
+                <div class="input-search">
+                    <div class="p-inputgroup">
+                        <p-inputtext placeholder="Buscar" id="search" autocomplete="off"></p-inputtext>
+                        <p-button icon="pi pi-search" class="p-button-warning gotosearch"></p-button>
+                       
+                    </div>
+                </div>
+            </div> -->
+             <!-- <div class="user-wrapper">
+                <nav class="nav-hover">
+                    <ul>
+                        <li class="font-bold">Regresar:</li>
+                    </ul> 
+                    <ul class="desplegable">   
+                        <li><a href="http://gradiosafamilia.com/menu.html">Menu principal</a></li>
+                        <li><a href="#">Menu documentos </a></li>
+                    </ul>
+                </nav>
+            </div>  -->
+        </header>
+        <div class="p-d-flex p-flex-row">
+            <form class="form form--direction" style="margin: auto;">
+                <div class="form__group">
+                    <span class="p-float-label">
+                        <p-inputtext id="nombreEvento" type="text" v-model="nombreEvento" class="form__input"></p-inputtext>
+                        <label for="nombreEvento">Nombre del Evento</label>
+                    </span>
+                    <span class="p-float-label">
+                        <p-inputtext id="lugar" type="text" v-model="lugar" class="form__input"></p-inputtext>
+                        <label for="lugar">Lugar del evento</label>
+                    </span>
+
+                </div>
+                <div class="form__group">
+                    <span class="p-float-label">
+                        <p-inputmask mask="99/99/9999" v-model="fecha" slot-char="mm/dd/yyyy" class="form__input"></p-inputmask>
+                        <label for="fecha">Fecha del evento</label>
+                    </span>
+                    <span class="p-float-label">
+                        <p-inputtext id="correo" type="text" v-model="correo" class="form__input"></p-inputtext>
+                        <label for="correo">Correo (Contacto)</label>
+                    </span>
+
+                </div>
+                <div class="form__group">
+                    <span class="p-float-label">
+                        <p-inputnumber id="numParticipantes" v-model="numParticipantes" class="form__input"></p-inputnumber>
+                        <label for="numParticipantes">Numero Participantes</label>
+                    </span>
+                    <p-fileupload name="demo[]" url="./upload.php" @upload="onUpload" :multiple="true" accept="image/*" :max-file-size="1000">
+                        <template #empty>
+                            <p>Elige una imagen para el evento</p>
+                        </template>
+                    </p-fileupload>
+
+                </div>
+                <div class="form__group">
+                    <p-button label="Guardar" class="form__button button--success"></p-button>
+                </div>
+            </form>
+        </div>
+    </main>
+  
+    <script>
+        var vm = new Vue({
+            components: {
+                'p-datatable': datatable,
+                'p-column': column,
+                'p-inputtext': inputtext,
+                'p-inputnumber': inputnumber,
+                'p-dropdown': dropdown,
+                'p-button': button,
+                'p-calendar': calendar,
+                'p-fileupload':fileupload,
+                'p-inputmask': inputmask,
+            },
+            data() {
+                return {
+                    nombreEvento:"",
+                    lugar:"",
+                    fecha:null,
+                    correo:"",
+                    numParticipantes:null,
+                }
+            },
+            mounted() {
+               
+                
+            },
+            methods: {
+                onUpload() {
+                    alert("Exito");
+		        }
+            },
+        }).$mount('#app');
+    </script>
+</body>
+</html>

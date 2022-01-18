@@ -1,0 +1,24 @@
+#header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    position: fixed;
+    left: 280px;
+    width: calc(100% - 280px);
+    top: 0;
+    z-index:100;
+    background-color: $white-color;
+    box-shadow: 0 0.125rem 0.625rem rgb(90 97 105 / 12%);
+    transition: left 300ms;
+    .header__buttonToggle{
+        display: flex;
+        align-items: center;
+        label span{
+            color: $graffito;
+            font-size: .852rem;
+            padding-right: 1rem;
+            cursor: pointer;
+        }
+    }
+
+}
