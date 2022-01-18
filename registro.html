@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <title>Registro</title>
+    <!--Vue & Axios-->
+    <link rel="stylesheet" href="node_modules/primevue/resources/primevue.css">
+    <link rel="stylesheet" href="node_modules/primevue/resources/themes/saga-blue/theme.css">
+    <link rel="stylesheet" href="node_modules/primeicons/primeicons.css">
+    <link rel="stylesheet" href="node_modules/primeflex/primeflex.css">
+    
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+
+    <!--Components-->
+    <script src="node_modules/primevue/inputtext/inputtext.umd.js"></script>
+    <script src="node_modules/primevue/button/button.umd.js"></script>
+    <script src="node_modules/primevue/datatable/datatable.umd.js"></script>
+    <script src="node_modules/primevue/column/column.umd.js"></script>
+    <script src="node_modules/primevue/dialog/dialog.umd.js"></script>
+    <script src="node_modules/primevue/calendar/calendar.umd.min.js"></script>
+    <script src="node_modules/primevue/dropdown/dropdown.umd.js"></script>
+    <script src="node_modules/primevue/fileupload/fileupload.umd.js"></script>
+    <script src="node_modules/primevue/inputmask/inputmask.umd.js"></script>
+    <script src="node_modules/primevue/inputnumber/inputnumber.umd.js"></script>
+    <script src="node_modules/primevue/fileupload/fileupload.umd.min.js"></script>
+    <script src="node_modules/primevue/radiobutton/radiobutton.umd.js"></script>
+
+
+
+    
+</head>
+<body>
+    <input type="checkbox" id="nav-toggle">
+    <aside class="sidebar">
+        <div class="siderbar__brand">
+            <span class="sidebar__logo las la-cube"></span>
+            <h2 class="sidebar__brand__title">Evento Dashboard</h2>
+        </div>
+        <div class="sidebar__menu">
+            <ul>
+                <li>
+                    <a href="#" class="sidebar__menu__link link--active" title="">
+                        <i class="far fa-calendar-alt"></i>
+                        <span class="">Eventos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar__menu__link" title="">
+                        <i class="fas fa-pen"></i>
+                        <span class="">Example</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar__menu__link" title="">
+                        <i class="fas fa-user-edit"></i>
+                        <span class="">Example</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar__menu__link" title="">
+                        <i class="far fa-clipboard"></i>
+                        <span class="">Example</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <main class="main" id="app">
+        <header class="header" id="header">
+            <h3 class="header__buttonToggle">
+                <label for="nav-toggle">
+                    <span class="fas fa-bars"></span>
+                </label>
+            </h3>
+            <!-- <div class="search-wrapper">
+                <div class="input-search">
+                    <div class="p-inputgroup">
+                        <p-inputtext placeholder="Buscar" id="search" autocomplete="off"></p-inputtext>
+                        <p-button icon="pi pi-search" class="p-button-warning gotosearch"></p-button>
+                       
+                    </div>
+                </div>
+            </div> -->
+             <!-- <div class="user-wrapper">
+                <nav class="nav-hover">
+                    <ul>
+                        <li class="font-bold">Regresar:</li>
+                    </ul> 
+                    <ul class="desplegable">   
+                        <li><a href="http://gradiosafamilia.com/menu.html">Menu principal</a></li>
+                        <li><a href="#">Menu documentos </a></li>
+                    </ul>
+                </nav>
+            </div>  -->
+        </header>
+        <div class="p-d-flex p-flex-row">
+            <form class="form form--direction" style="margin: auto;">
+                <div class="form__group">
+                    <span class="p-float-label">
+                        <p-inputtext id="numeroRegistro" type="text" v-model="numeroRegistro" class="form__input"></p-inputtext>
+                        <label for="numeroRegistro">Número de registro</label>
+                    </span>
+                    <span class="p-float-label">
+                        <p-inputtext id="numeroInvitacion" type="text" v-model="numeroInvitacion" class="form__input"></p-inputtext>
+                        <label for="numeroInvitacion">Número de invitación</label>
+                    </span>
+                </div>
+                <div class="form__group">
+                    <span class="p-float-label">
+                        <p-inputtext id="nombre" type="text" v-model="nombre" class="form__input"></p-inputtext>
+                        <label for="nombre">Nombre(s)</label>
+                    </span>
+                    <span class="p-float-label">
+                        <p-inputtext id="apellidoPaterno" type="text" v-model="apellidoPaterno" class="form__input"></p-inputtext>
+                        <label for="apellidoPaterno">Apellido paterno</label>
+                    </span>
+                </div>
+                <div class="form__group">
+                    <span class="p-float-label">
+                        <p-inputtext id="apellidoMaterno" type="text" v-model="apellidoMaterno" class="form__input"></p-inputtext>
+                        <label for="apellidoMaterno">Apellido materno</label>
+                    </span>
+                    <span class="p-float-label">
+                        <p-inputtext id="correo" type="text" v-model="correo" class="form__input"></p-inputtext>
+                        <label for="correo">Correo personal</label>
+                    </span>
+                </div>
+                <div class="form__group">
+                    <span class="p-float-label">
+                        <p-inputtext id="nombreEmpresa" type="text" v-model="nombreEmpresa" class="form__input"></p-inputtext>
+                        <label for="nombreEmpresa">Nombre de la Empresa</label>
+                    </span>
+                    <span class="p-float-label">
+                        <p-inputtext id="grupo" type="text" v-model="grupo" class="form__input"></p-inputtext>
+                        <label for="grupo">Grupo al que pertenece</label>
+                    </span>
+                </div>
+                <div class="form__group">
+                    <span class="p-float-label">
+                        <p-inputtext id="direccion" type="text" v-model="direccion" class="form__input"></p-inputtext>
+                        <label for="direccion">Dirección</label>
+                    </span>
+                    <span class="p-float-label">
+                        <p-inputtext id="colonia" type="text" v-model="colonia" class="form__input"></p-inputtext>
+                        <label for="colonia">Colonia</label>
+                    </span>
+                </div>
+                <div class="form__group">
+                    <span class="p-float-label">
+                        <p-inputnumber id="codigoPostal" v-model="codigoPostal" class="form__input"></p-inputnumber>
+                        <label for="codigoPostal">Código postal</label>
+                    </span>
+                    <span class="p-float-label">
+                        <p-inputtext id="ciudad" type="text" v-model="ciudad" class="form__input"></p-inputtext>
+                        <label for="ciudad">Ciudad</label>
+                    </span>
+                </div>
+                <div class="form__group">
+                    <span class="p-float-label">
+                        <p-inputtext id="estado" type="text" v-model="estado" class="form__input"></p-inputtext>
+                        <label for="estado">Estado</label>
+                    </span>
+                    <span class="p-float-label">
+                        <p-inputtext id="pais" type="text" v-model="pais" class="form__input"></p-inputtext>
+                        <label for="pais">País</label>
+                    </span>
+                </div>
+                <div class="form__group">
+                    <span class="p-float-label">
+                        <p-inputnumber id="celular" type="number" v-model="celular" class="form__input"></p-inputnumber>
+                        <label for="celular">Teléfono Celular</label>
+                    </span>
+                    <span class="p-float-label">
+                        <p-inputtext id="telefonoTrabajo" type="number" v-model="telefonoTrabajo" class="form__input"></p-inputtext>
+                        <label for="telefonoTrabajo">Teléfono de Trabajo</label>
+                    </span>
+                </div>
+                <div class="form__group">
+                    <span class="p-float-label">
+                        <p-inputnumber id="telCasa" type="number" v-model="telCasa" class="form__input"></p-inputnumber>
+                        <label for="telCasa">Teléfono de casa</label>
+                    </span>
+                    <span class="p-float-label">
+                        <p-inputnumber id="rfc" type="number" v-model="rfc" class="form__input"></p-inputnumber>
+                        <label for="rfc">RFC</label>
+                    </span>
+                </div>
+                <div class="grid form__group">
+                    <span class="p-float-label">
+                    <div class="col-12 md:col-4">
+                        <label for="numSax">¿Tiene número de Sales Sax?</label>
+                    
+                        <div class="field-radiobutton">
+                            <p-radiobutton id="option1" name="option" value="Option 1" v-model="radioValue"></p-radiobutton>
+                            <label for="option1">Si</label>
+                        </div>
+                    </div>
+                </span>
+                    <div class="col-12 md:col-4">
+                        <div class="field-radiobutton">
+                            <p-radiobutton id="option2" name="option" value="Option 2" v-model="radioValue"></p-radiobutton>
+                            <label for="option2">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form__group">
+                    <span class="p-float-label">
+                        <p-inputnumber id="numSalesTax" type="number" v-model="numSalesTax" class="form__input"></p-inputnumber>
+                        <label for="numSalesTax">Número de Sales Tax</label>
+                    </span>
+                    <span class="p-float-label">
+                        <p-inputtext id="nombreEmergencia" type="text" v-model="nombreEmergencia" class="form__input"></p-inputtext>
+                        <label for="nombreEmergencia">Nombre de contacto de emergencia</label>
+                    </span>
+                </div>
+                <div class="form__group">
+                    <span class="p-float-label">
+                        <p-inputtext id="correoEmergencia" type="text" v-model="correoEmergencia" class="form__input"></p-inputtext>
+                        <label for="correoEmergencia">Correo de contacto de emergencia</label>
+                    </span>
+                    <span class="p-float-label">
+                        <p-inputnumber id="telEmergencia" type="number" v-model="telEmergencia" class="form__input"></p-inputnumber>
+                        <label for="telEmergencia">Teléfono de emergencia</label>
+                    </span>
+                </div>
+                <div class="form__group">
+                    <span class="p-float-label">
+                        <p-inputtext id="eventos" type="text" v-model="eventos" class="form__input"></p-inputtext>
+                        <label for="eventos">Si ha participado en otros eventos en USA indique en cuál</label>
+                    </span>
+                    <span class="p-float-label">
+                        <p-inputnumber id="exportar" type="number" v-model="exportar" class="form__input"></p-inputnumber>
+                        <label for="exportar">¿Ya exporta actuamente?</label>
+                    </span>
+                </div>
+                <div class="form__group">
+                    <p-button label="Guardar" class="form__button button--success"></p-button>
+                </div>
+            </form>
+        </div>
+    </main>
+  
+    <script>
+        var vm = new Vue({
+            components: {
+                'p-datatable': datatable,
+                'p-column': column,
+                'p-inputtext': inputtext,
+                'p-inputnumber': inputnumber,
+                'p-dropdown': dropdown,
+                'p-button': button,
+                'p-calendar': calendar,
+                'p-fileupload':fileupload,
+                'p-inputmask': inputmask,
+                'p-radiobutton': radiobutton,
+            },
+            data() {
+                return {
+                    
+                }
+            },
+            mounted() {
+               
+                
+            },
+            methods: {
+                onUpload() {
+                    alert("Exito");
+		        }
+            },
+        }).$mount('#app');
+    </script>
+</body>
+</html>
