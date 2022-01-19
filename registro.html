@@ -103,6 +103,7 @@
             </div>  -->
         </header>
         <div class="p-d-flex p-flex-row">
+
             <form class="form form--direction" style="margin: auto;">
                 <div class="form__group">
                     <span class="p-float-label">
@@ -114,6 +115,25 @@
                         <label for="numeroInvitacion">Número de invitación</label>
                     </span>
                 </div>
+                <!--  <div class="form-group">
+
+                    <span class="p-float-label">
+                        <p-inputtext id="txtNombre" required type="text" v-model="txtNombre">
+                        </p-inputtext>
+                        <label for="txtNombre">Nombre(s)</label>
+                    </span>
+                    <span class="p-float-label">
+                        <p-inputtext id="txtApellidoPaterno" required type="text"
+                            v-model="txtApellidoPaterno"></p-inputtext>
+                        <label for="txtApellidoPaterno">Apellido Paterno</label>
+                    </span>
+                    <span class="p-float-label">
+                        <p-inputtext id="txtApellidoMaterno" required type="text"
+                            v-model="txtApellidoMaterno"></p-inputtext>
+                        <label for="txtApellidoMaterno">Apellido Materno</label>
+                    </span>
+                </div>-->
+              
                 <div class="form__group">
                     <span class="p-float-label">
                         <p-inputtext id="nombre" type="text" v-model="nombre" class="form__input"></p-inputtext>
@@ -170,8 +190,11 @@
                         <label for="estado">Estado</label>
                     </span>
                     <span class="p-float-label">
-                        <p-inputtext id="pais" type="text" v-model="pais" class="form__input"></p-inputtext>
+                       <p-dropdown v-model="selectPrioridad" :options="arrayPrioridad"
+                       option-label="prioridad" placeholder="Selecciona una opción"></p-dropdown>
+                       
                         <label for="pais">País</label>
+                      
                     </span>
                 </div>
                 <div class="form__group">
@@ -194,20 +217,22 @@
                         <label for="rfc">RFC</label>
                     </span>
                 </div>
+                <br>
                 <div class="grid form__group">
                     <span class="p-float-label">
                     <div class="col-12 md:col-4">
                         <label for="numSax">¿Tiene número de Sales Sax?</label>
-                    
-                        <div class="field-radiobutton">
-                            <p-radiobutton id="option1" name="option" value="Option 1" v-model="radioValue"></p-radiobutton>
-                            <label for="option1">Si</label>
-                        </div>
                     </div>
                 </span>
-                    <div class="col-12 md:col-4">
+                    <div class="radio__input d--flex">
+                        <div class="field-radiobutton ">
+                            <p-radiobutton id="option2" name="option1" value="Option 1" v-model="radioValue"></p-radiobutton>
+                            <label for="option2">Si</label>
+                        </div>
+                    </div> 
+                    <div class="radio__input d--flex">
                         <div class="field-radiobutton">
-                            <p-radiobutton id="option2" name="option" value="Option 2" v-model="radioValue"></p-radiobutton>
+                            <p-radiobutton id="option2" name="option2" value="Option 2" v-model="radioValue"></p-radiobutton>
                             <label for="option2">No</label>
                         </div>
                     </div>
@@ -237,9 +262,119 @@
                         <p-inputtext id="eventos" type="text" v-model="eventos" class="form__input"></p-inputtext>
                         <label for="eventos">Si ha participado en otros eventos en USA indique en cuál</label>
                     </span>
+                    <div class="grid form__group">
+                        <span class="p-float-label">
+                        <div class="col-12 md:col-4">
+                            <label for="exportas">¿Ya exporta actuamente?</label>
+                        
+                        </div>
+                    </span>
+                    <div class="radio__input d--flex">
+                        <div class="field-radiobutton ">
+                            <p-radiobutton id="option2" name="option1" value="Option 1" v-model="radioValue"></p-radiobutton>
+                            <label for="option2">Si</label>
+                        </div>
+                    </div> 
+                    <div class="radio__input d--flex">
+                        <div class="field-radiobutton">
+                            <p-radiobutton id="option2" name="option2" value="Option 2" v-model="radioValue"></p-radiobutton>
+                            <label for="option2">No</label>
+                        </div>
+                    </div>
+                    </div>
                     <span class="p-float-label">
-                        <p-inputnumber id="exportar" type="number" v-model="exportar" class="form__input"></p-inputnumber>
-                        <label for="exportar">¿Ya exporta actuamente?</label>
+                        <p-inputtext id="tipoProducto" type="text" v-model="tipoProducto" class="form__input"></p-inputtext>
+                        <label for="tipoProducto">Tipo de productos que vendera en el festival</label>
+                    </span>
+                    <div class="grid form__group">
+                        <span class="p-float-label">
+                        <div class="col-12 md:col-4">
+                            <label for="venAlimentos">¿Vendera Alimentos?</label>
+                        
+                        </div>
+                    </span>
+                    <div class="radio__input d--flex">
+                        <div class="field-radiobutton ">
+                            <p-radiobutton id="option2" name="option1" value="Option 1" v-model="radioValue"></p-radiobutton>
+                            <label for="option2">Si</label>
+                        </div>
+                    </div> 
+                    <div class="radio__input d--flex">
+                        <div class="field-radiobutton">
+                            <p-radiobutton id="option2" name="option2" value="Option 2" v-model="radioValue"></p-radiobutton>
+                            <label for="option2">No</label>
+                        </div>
+                    </div>
+                    </div>
+                    <span class="p-float-label">
+                        <p-inputtext id="registroSanitario" type="text" v-model="registroSanitario" class="form__input"></p-inputtext>
+                        <label for="registroSanitario">Si la respuesta es si, Tiene registro sanitario USA FDA</label>
+                    </span>
+                    <div class="grid form__group">
+                        <span class="p-float-label">
+                        <div class="col-12 md:col-4">
+                            <label for="Alimentos">¿Prepara Alimentos?</label>
+                        
+                        </div>
+                    </span>
+                    <div class="radio__input d--flex">
+                        <div class="field-radiobutton ">
+                            <p-radiobutton id="option2" name="option1" value="Option 1" v-model="radioValue"></p-radiobutton>
+                            <label for="option2">Si</label>
+                        </div>
+                    </div> 
+                    <div class="radio__input d--flex">
+                        <div class="field-radiobutton">
+                            <p-radiobutton id="option2" name="option2" value="Option 2" v-model="radioValue"></p-radiobutton>
+                            <label for="option2">No</label>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="grid form__group">
+                        <span class="p-float-label">
+                        <div class="col-12 md:col-4">
+                            <label for="exportador">¿Ya es exportador?</label>
+                       <br>
+                        
+                        </div>
+                    </span>
+                    <div class="radio__input d--flex">
+                        <div class="field-radiobutton ">
+                            <p-radiobutton id="option2" name="option1" value="Option 1" v-model="radioValue"></p-radiobutton>
+                            <label for="option2">Si</label>
+                        </div>
+                    </div> 
+                    <div class="radio__input d--flex">
+                        <div class="field-radiobutton">
+                            <p-radiobutton id="option2" name="option2" value="Option 2" v-model="radioValue"></p-radiobutton>
+                            <label for="option2">No</label>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="grid form__group">
+                        <span class="p-float-label">
+                        <div class="col-12 md:col-4">
+                            <label for="previos">¿Ha participado en eventos previos con nosotros?</label>
+                        
+                            
+                        </div>
+                    </span>
+                    <div class="radio__input d--flex">
+                        <div class="field-radiobutton ">
+                            <p-radiobutton id="option2" name="option1" value="Option 1" v-model="radioValue"></p-radiobutton>
+                            <label for="option2">Si</label>
+                        </div>
+                    </div> 
+                    <div class="radio__input d--flex">
+                        <div class="field-radiobutton">
+                            <p-radiobutton id="option2" name="option2" value="Option 2" v-model="radioValue"></p-radiobutton>
+                            <label for="option2">No</label>
+                        </div>
+                    </div>
+                    </div>
+                    <span class="p-float-label">
+                        <p-inputtext id="comentarios" type="text" v-model="comentarios" class="form__input"></p-inputtext>
+                        <label for="comentarios">Comentarios</label>
                     </span>
                 </div>
                 <div class="form__group">
@@ -265,6 +400,15 @@
             },
             data() {
                 return {
+                    arrayPrioridad: [{
+                        prioridad: "Canada"
+                    }, {
+                        prioridad: "Mexico"
+                    }, {
+                        prioridad: "USA"
+                    }
+                    ],
+                    selectPrioridad: null,
                     
                 }
             },
