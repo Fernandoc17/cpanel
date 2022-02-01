@@ -40,6 +40,7 @@
     <script src="node_modules/primevue/fileupload/fileupload.umd.min.js"></script>
     <script src="node_modules/primevue/radiobutton/radiobutton.umd.js"></script>
     <script src="node_modules/primevue/fieldset/fieldset.umd.min.js"></script>
+    <script src="node_modules/primevue/textarea/textarea.umd.min.js"></script>
 
 
 </head>
@@ -143,18 +144,48 @@
                                 <label for="correo">Correo personal</label>
                             </span>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <span class="p-float-label">
                                 <p-inputtext id="nombreEmpresa" type="text" v-model="nombreEmpresa"
                                     class="form__input form-control"></p-inputtext>
                                 <label for="nombreEmpresa">Nombre de la Empresa</label>
                             </span>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <span class="p-float-label">
                                 <p-inputtext id="grupo" type="text" v-model="grupo" class="form__input form-control">
                                 </p-inputtext>
                                 <label for="grupo">Grupo al que pertenece</label>
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span class="p-float-label">
+                                <p-inputtext id="telCasa" type="number" v-model="telCasa" class="form__input form-control"></p-inputtext>
+                                <label for="telCasa">Teléfono de casa</label>
+                            </span>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="p-float-label">
+                                <p-inputtext id="celular" type="number" v-model="celular" class="form__input form-control"></p-inputtext>
+                                <label for="celular">Teléfono Celular</label>
+                            </span>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="p-float-label">
+                                <p-inputtext id="telefonoTrabajo" type="number" v-model="telefonoTrabajo" class="form__input form-control"></p-inputtext>
+                                <label for="telefonoTrabajo">Teléfono de Trabajo</label>
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span class="p-float-label">
+                                <p-inputtext id="rfc" type="number" v-model="rfc" class="form__input form-control"></p-inputtext>
+                                <label for="rfc">RFC</label>
                             </span>
                         </div>
                     </div>
@@ -165,7 +196,7 @@
                         <div class="col-md-4">
                             <span class="">
                                 <p-dropdown v-model="selectPrioridad" :options="arrayPrioridad" option-label="prioridad"
-                                    placeholder="Selecciona un País" id="pais" class="form__input"></p-dropdown>
+                                    placeholder="Selecciona un País" id="pais" class="form__input form-control"></p-dropdown>
 
                             </span>
                         </div>
@@ -186,7 +217,7 @@
                     </div>
                     <br>
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <span class="p-float-label">
                                 <p-inputtext id="codigoPostal" v-model="codigoPostal" type="number" class="form__input form-control"></p-inputtext>
                                 <label for="codigoPostal">Código postal</label>
@@ -198,7 +229,7 @@
                                 <label for="colonia">Colonia</label>
                             </span>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <span class="p-float-label">
                                 <p-inputtext id="direccion" type="text" v-model="direccion" class="form__input form-control"></p-inputtext>
                                 <label for="direccion">Dirección</label>
@@ -207,6 +238,214 @@
                     </div>
                 </p-fieldset>
                 <br>
+                <p-fieldset legend="Contacto de Emergencia">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span class="p-float-label">
+                                <p-inputtext id="nombreEmergencia" type="text" v-model="nombreEmergencia" class="form__input form-control"></p-inputtext>
+                                <label for="nombreEmergencia">Nombre de contacto de emergencia</label>
+                            </span>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="p-float-label">
+                                <p-inputtext id="correoEmergencia" type="text" v-model="correoEmergencia" class="form__input form-control"></p-inputtext>
+                                <label for="correoEmergencia">Correo de contacto de emergencia</label>
+                            </span>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="p-float-label">
+                                <p-inputtext id="telEmergencia" type="number" v-model="telEmergencia" class="form__input form-control"></p-inputtext>
+                                <label for="telEmergencia">Teléfono de emergencia</label>
+                            </span>
+                        </div>
+                    </div>
+                </p-fieldset>
+                <br>
+                <p-fieldset legend="Otros">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span class="p-float-label">
+                                <div >
+                                    <label for="numSax">¿Tiene número de Sales Sax?</label>
+                                </div>
+                            </span>
+                            <br>
+                            <div class="radio__input d--flex">
+                                <div class="field-radiobutton ">
+                                    <p-radiobutton id="opcionSiSax" name="opcionSiSax" value="opcionSiSax" v-model="salesSax"></p-radiobutton>
+                                    <label for="opcionSiSax">Si</label>
+                                </div>
+                            </div> 
+                            <div class="radio__input d--flex">
+                                <div class="field-radiobutton">
+                                    <p-radiobutton id="opcionNoSax" name="opcionNoSax" value="opcionNoSax" v-model="salesSax"></p-radiobutton>
+                                    <label for="oopcionNoSax">No</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div id="salesSax">
+                                <span class="p-float-label">
+                                    <p-inputtext id="numSalesTax" type="number" v-model="numSalesTax" class="form__input form-control"></p-inputtext>
+                                    <label for="numSalesTax">Número de Sales Tax*</label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="p-float-label">
+                                <div>
+                                    <label for="otroEvento">¿Ha participado en otro evento en USA?</label>
+                                </div>
+                            </span>
+                            <br>
+                            <div class="radio__input d--flex">
+                                <br>
+                                <div class="field-radiobutton ">
+                                    <p-radiobutton id="opcionSiOtro" name="opcionSiOtro" value="opcionSiOtro" v-model="otro"></p-radiobutton>
+                                    <label for="opcionSiOtro">Si</label>
+                                </div>
+                            </div> 
+                            <div class="radio__input d--flex">
+                                <div class="field-radiobutton">
+                                    <p-radiobutton id="opcionNoSax" name="opcioNoOtro" value="opcioNoOtro" v-model="otro"></p-radiobutton>
+                                    <label for="opcionSiOtro">No</label>
+                                </div>
+                            </div>
+                            <br>
+                            <span class="p-float-label">
+                                <p-inputtext id="nombreEvento" type="number" v-model="nombreEvento" class="form__input form-control"></p-inputtext>
+                                <label for="nombreEvento">Indique cuál</label>
+                            </span>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="grid form__group">
+                                <span class="p-float-label">
+                                    <div>
+                                        <label for="exportas">¿Ya exporta actuamente?</label>
+                                    </div>
+                                </span>
+                                <div class="radio__input d--flex">
+                                    <div class="field-radiobutton ">
+                                        <p-radiobutton id="exportaSi" name="exportaSi" value="Si" v-model="exporta"></p-radiobutton>
+                                        <label for="exportaSi">Si</label>
+                                    </div>
+                                </div> 
+                                <div class="radio__input d--flex">
+                                    <div class="field-radiobutton">
+                                        <p-radiobutton id="exportaNo" name="exportaNo" value="No" v-model="exporta"></p-radiobutton>
+                                        <label for="exportaNo">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span class="p-float-label">
+                                <p-textarea v-model="tipoProductos" :auto-resize="true" rows="2" cols="20" id="tipoProductos" class="form__input form-control"></p-textarea>
+                                <label for="tipoProductos">Tipo de producto(s) que venderá en el evento</label>
+                            </span>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="grid form__group">
+                                <span class="p-float-label">
+                                    <div>
+                                        <label for="alimento">¿Venderá alimentos?</label>
+                                    </div>
+                                </span>
+                                <div class="radio__input d--flex">
+                                    <div class="field-radiobutton ">
+                                        <p-radiobutton id="alimentosSi" name="alimentosSi" value="alimentosSi" v-model="alimentos"></p-radiobutton>
+                                        <label for="alimentosSi">Si</label>
+                                    </div>
+                                </div> 
+                                <div class="radio__input d--flex">
+                                    <div class="field-radiobutton">
+                                        <p-radiobutton id="alimentosNo" name="alimentosNo" value="alimentosNo" v-model="alimentos"></p-radiobutton>
+                                        <label for="alimentosNo">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="grid form__group">
+                                <span class="p-float-label">
+                                    <div>
+                                        <label for="registroSanitario">¿Tiene registro sanitario de USA FDA?</label>
+                                    </div>
+                                </span>
+                                <br>
+                                <div class="radio__input d--flex">
+                                    <div class="field-radiobutton ">
+                                        <p-radiobutton id="regSanitarioSi" name="regSanitarioSi" value="Si" v-model="regSanitario"></p-radiobutton>
+                                        <label for="regSanitarioSi">Si</label>
+                                    </div>
+                                </div> 
+                                <div class="radio__input d--flex">
+                                    <div class="field-radiobutton">
+                                        <p-radiobutton id="regSanitarioNo" name="regSanitarioNo" value="No" v-model="regSanitario"></p-radiobutton>
+                                        <label for="regSanitarioNo">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="grid form__group">
+                                <span class="p-float-label">
+                                    <div>
+                                        <label for="pAlimentos">¿Prepara alimentos?</label>
+                                    </div>
+                                </span>
+                                <br>
+                                <div class="radio__input d--flex">
+                                    <div class="field-radiobutton ">
+                                        <p-radiobutton id="prepAlimentosSi" name="prepAlimentosSi" value="Si" v-model="prepAlimentos"></p-radiobutton>
+                                        <label for="prepAlimentosSi">Si</label>
+                                    </div>
+                                </div> 
+                                <div class="radio__input d--flex">
+                                    <div class="field-radiobutton">
+                                        <p-radiobutton id="prepAlimentosNo" name="prepAlimentosNo" value="No" v-model="prepAlimentos"></p-radiobutton>
+                                        <label for="prepAlimentosNo">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="grid form__group">
+                                <span class="p-float-label">
+                                    <div>
+                                        <label for="participacion">¿Ha participado en eventos anteriores con nosotros?</label>
+                                    </div>
+                                </span>
+                                <br>
+                                <div class="radio__input d--flex">
+                                    <div class="field-radiobutton ">
+                                        <p-radiobutton id="participacionSi" name="participacionSi" value="Si" v-model="participacion"></p-radiobutton>
+                                        <label for="prepAlimentosSi">Si</label>
+                                    </div>
+                                </div> 
+                                <div class="radio__input d--flex">
+                                    <div class="field-radiobutton">
+                                        <p-radiobutton id="participacionNo" name="participacionNo" value="No" v-model="participacion"></p-radiobutton>
+                                        <label for="prepAlimentosNo">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="p-float-label">
+                                <p-textarea v-model="comentarios" :auto-resize="true" rows="2" cols="20" id="comentarios" class="form__input form-control"></p-textarea>
+                                <label for="comentarios">Comentarios</label>
+                            </span>
+                        </div>
+                        <div class="col-md-4">
+                            
+                        </div>
+                    </div>
+                </p-fieldset>
             </form>
         </div>
     </main>
@@ -225,6 +464,7 @@
                 'p-inputmask': inputmask,
                 'p-radiobutton': radiobutton,
                 'p-fieldset': fieldset,
+                'p-textarea': textarea,
             },
             data() {
                 return {
@@ -237,7 +477,30 @@
                     }
                     ],
                     selectPrioridad: null,
-
+                    numeroRegistro: "",
+                    numeroInvitacion: "",
+                    nombre: "",
+                    apellidoPaterno: "",
+                    apellidoMaterno: "",
+                    correo: "",
+                    nombreEmpresa: "",
+                    grupo: "",
+                    telCasa: "",
+                    celular: "",
+                    telefonoTrabajo: "",
+                    rfc: "",
+                    estado: "",
+                    ciudad: "",
+                    codigoPostal: "",
+                    colonia: "",
+                    direccion: "",
+                    nombreEmergencia: "",
+                    correoEmergencia: "",
+                    telEmergencia: "",
+                    numSalesTax: "",
+                    nombreEvento: "",
+                    tipoProductos: "",
+                    comentarios: "",
                 }
             },
             mounted() {
